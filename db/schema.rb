@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_20_113655) do
+ActiveRecord::Schema.define(version: 2020_12_20_120730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "language_rules", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.bigint "smart_link_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["smart_link_id"], name: "index_language_rules_on_smart_link_id"
+  end
 
   create_table "smart_links", force: :cascade do |t|
     t.string "name"
@@ -31,5 +40,6 @@ ActiveRecord::Schema.define(version: 2020_12_20_113655) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "language_rules", "smart_links"
   add_foreign_key "smart_links", "users"
 end

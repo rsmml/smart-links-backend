@@ -11,9 +11,9 @@ Rails.application.routes.draw do
       # Log-Status
       get :logged_in, to: 'sessions#logged_in'
 
-      # SmartLinks
+      # SmartLinks / Rules
       resources :smart_links
+      resources :language_rules
     end
   end
-  # root to: 'pages#home'
 end

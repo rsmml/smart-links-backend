@@ -2,7 +2,7 @@ class Api::V1::SessionsController < ApplicationController
   include CurrentUserConcern
 
   def create
-    user = User.find_by(email: params[:email]).try(:authenticate, params[:password])
+    user = User.find_by!(email: params[:email]).try(:authenticate, params[:password])
 
     if user
       session[:user_id] = user.id
@@ -14,7 +14,12 @@ class Api::V1::SessionsController < ApplicationController
 
   def destroy
     reset_session
-    render json: { status: 200, logged_out: true }
+    render json: { status: 200, logged_in: false, logged_out: true }
+  end
+
+  def check_user
+    users = User.all
+    render json: { users: users }
   end
 
   def logged_in

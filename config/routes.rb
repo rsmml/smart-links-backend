@@ -10,6 +10,8 @@ Rails.application.routes.draw do
       delete 'logout', controller: :sessions, action: :destroy
       # Log-Status
       get :logged_in, to: 'sessions#logged_in'
+      # Check User Exist?
+      get :check_user, to: 'sessions#check_user'
 
       # SmartLinks / Rules
       resources :smart_links

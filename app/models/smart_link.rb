@@ -1,6 +1,6 @@
 class SmartLink < ApplicationRecord
   belongs_to :user
-  has_many :language_rules
+  has_many :language_rules, dependent: :destroy
 
   LANGUAGES = %w[ES DE EN]
 

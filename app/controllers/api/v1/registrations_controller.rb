@@ -1,7 +1,7 @@
 class Api::V1::RegistrationsController < ApplicationController
   include CurrentUserConcern
 
-  def destroy
+  def logout
     reset_session
     render json: { status: 200, logged_out: true }
   end

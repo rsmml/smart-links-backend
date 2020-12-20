@@ -10,6 +10,9 @@ Rails.application.routes.draw do
       delete 'logout', controller: :sessions, action: :destroy
       # Log-Status
       get :logged_in, to: 'sessions#logged_in'
+
+      # SmartLinks
+      resources :smart_links
     end
   end
   # root to: 'pages#home'

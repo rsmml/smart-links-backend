@@ -13,8 +13,7 @@ class Api::V1::SessionsController < ApplicationController
   end
 
   def destroy
-    # reset_session
-    session[:user_id] = nil
+    reset_session
     render json: { status: 200, logged_in: false }
   end
 

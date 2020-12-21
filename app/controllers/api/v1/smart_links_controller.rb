@@ -15,7 +15,7 @@ class Api::V1::SmartLinksController < ApplicationController
     smart_link = SmartLink.create(smart_link_params)
     smart_link.user_id = @current_user.id
     if smart_link.save
-      render json: smart_link, status: :created
+      render json: { smart_link: smart_link, status: :created }
     else
       render json: { status: 401 }
     end
@@ -31,6 +31,12 @@ class Api::V1::SmartLinksController < ApplicationController
     else
       render json: { status: 401 }
     end
+  end
+
+  def my_links
+    user = @current_user
+    smart_links = SmartLink.all.where(user_id: user.id)
+    render json: { smart_links: smart_links }
   end
 
   private

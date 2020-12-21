@@ -6,8 +6,7 @@ Rails.application.routes.draw do
       # Sign-up
       resources :registrations, only: %i[create]
       # Log-out
-      # delete :signout, to: 'sessions#logout'
-      delete 'logout', controller: :sessions, action: :destroy
+      delete :logout, to: 'sessions#destroy'
       # Log-Status
       get :logged_in, to: 'sessions#logged_in'
       # Check User Exist?

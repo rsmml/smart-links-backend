@@ -2,8 +2,8 @@ class Api::V1::SessionsController < ApplicationController
   include CurrentUserConcern
 
   def create
-    user = User.find_by_email(params[:email])
-
+    user = User.find_by(email: params[:email])
+    puts "This is the user id #{user.id}"
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       render json: { status: :created, logged_in: true, user: user }

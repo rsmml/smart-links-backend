@@ -12,8 +12,8 @@ class Api::V1::LanguageRulesController < ApplicationController
 
   def create
     language_rule = LanguageRule.create(language_rule_params)
-    language_rule.user_id = @current_user.id
-    if language_rule.save
+
+    if language_rule
       render json: language_rule, status: :created
     else
       render json: { status: 401 }

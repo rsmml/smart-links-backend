@@ -42,7 +42,7 @@ class Api::V1::SmartLinksController < ApplicationController
   def destroy
     smart_link = SmartLink.find(params[:id])
     smart_link.destroy
-    render json: { smart_linl: 'destroyed'}
+    render json: { smart_link: 'destroyed'}
   end
 
   def my_links

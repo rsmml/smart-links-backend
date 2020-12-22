@@ -16,7 +16,9 @@ class Api::V1::SmartLinksController < ApplicationController
     smart_link = SmartLink.create(smart_link_params)
     user = User.find(params[:user_id])
     smart_link.user_email = user.email
-    smart_link.minutes = Time.now.to_f * 1000
+    smart_link.save
+    minutes = Time.now.to_f * 1000
+    smart_link.minutes = minutes.to_i
     smart_link.save
     if smart_link
       render json: { smart_link: smart_link, status: :created }

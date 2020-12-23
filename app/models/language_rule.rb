@@ -3,6 +3,6 @@ class LanguageRule < ApplicationRecord
 
   LANGUAGES = %w[ES DE EN]
 
-  validates :name, presence: true, inclusion: { in: LANGUAGES }
+  validates :name, presence: true
   validates :url, presence: true
 end

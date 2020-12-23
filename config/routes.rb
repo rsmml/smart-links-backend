@@ -13,8 +13,9 @@ Rails.application.routes.draw do
       get :check_user, to: 'sessions#check_user'
 
       # SmartLinks / Rules
-      resources :smart_links
-      resources :language_rules
+      resources :smart_links do
+        resources :language_rules
+      end
     end
   end
 end

@@ -2,7 +2,7 @@ class Api::V1::LanguageRulesController < ApplicationController
   before_action :set_language_rule, only: %i[show edit update destroy]
 
   def index
-    language_rules = LanguageRule.all
+    language_rules = LanguageRule.where(smart_link_id: params[:smart_link_id])
     render json: language_rules
   end
 

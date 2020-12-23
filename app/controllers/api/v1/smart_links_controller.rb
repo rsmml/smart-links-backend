@@ -4,7 +4,9 @@ class Api::V1::SmartLinksController < ApplicationController
 
   def index
     smart_links = SmartLink.all
-    render json: smart_links
+    # language_rules = smart_links.map { |smart_link| smart_link.language_rules }
+
+    render json: { smart_links: smart_links }
   end
 
   def show

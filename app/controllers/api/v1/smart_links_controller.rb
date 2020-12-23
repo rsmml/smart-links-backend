@@ -44,13 +44,7 @@ class Api::V1::SmartLinksController < ApplicationController
   def destroy
     smart_link = SmartLink.find(params[:id])
     smart_link.destroy
-    render json: { smart_link: 'destroyed'}
-  end
-
-  def my_links
-    user = @current_user
-    smart_links = SmartLink.all.where(user_id: user.id)
-    render json: { smart_links: smart_links }
+    render json: { smart_link: 'destroyed' }
   end
 
   private

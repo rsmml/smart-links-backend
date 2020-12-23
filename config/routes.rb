@@ -15,8 +15,6 @@ Rails.application.routes.draw do
       # SmartLinks / Rules
       resources :smart_links
       resources :language_rules
-
-      get :my_links, to: 'smart_links#my_links'
     end
   end
 end
